@@ -1,0 +1,36 @@
+Create One console Based Application: 
+
+Customer Management System
+------------------------------------
+
+1. Create one Entity class Customer
+(id, name, email,phone, password)
+2. Create One operational class
+
+declare and array for customer[]
+write the methods to add Customer
+		     view All customer
+		     remove customer
+3. Write a main method from that you can take input from users 
+
+	enter 1. add new customer
+		 : get the details from the user 
+		   create customer object and add it in customer array
+	      2. view all
+		  : call view All customer method and display customer array
+	      3. remove customer:
+		: ask the user to enter the user Id and 
+		based on that remove element from an Customer Array
+
+Make this process continues and everytime ask the user press n to exit
+while(true){
+if(input.equals("n"))
+	break;
+}
+
+
+
+
+
+
+
