@@ -1,0 +1,26 @@
+Assignment 2:
+______________________________________
+
+Way: Simple Way
+
+Create one application for the currency Converter.
+
+Provide one text field where user can enter the Amount. (Add amount in INR)
+
+Add below one text Field 
+
+Also provide some buttons for diffrent currency type and show the converstion in Text Fiels.
+
+___________________________________________________________________________________________
+
+Way 2: Complex Way
+
+add textfield to add the amount by user (textfield should be number field)
+
+From: before this text field add one dropdown (Selection) and add some currency codes
+
+To: One more dropdown for another currency codes
+
+Button for action listener.
+
+in onclick listener put diffrent conditions according to your currency conversion so you can seprate your logic and show the converstion on text field.

@@ -1,0 +1,582 @@
+Mobile-Development with Android
+---------------------------------------------
+
+Types of Mobile Apps
+-------------------------------------
+Ecommerce App
+Travel App
+Multi Media App
+Social Networking Apps
+Location-Based Apps
+Gamings App
+Utiltity: Calculator, calender
+
+Here we will create applications using Android Platform.
+
+Android Studion for the App Development
+
+___________________________________________________________________________
+Activity: provides the window in which the app draw a UI. To load the activity we need to write a JAVA Code.
+
+Let'c create One activity: It provides one JAVA file and one xml file for UI.
+
+MainActivity.java , activity_main.xml
+
+When you run your application thye first activity which runs called launcher activity.
+
+Layout-height and layout-width can accept these values
+
+wrap_content: width/height of a view should be big enough to wrap itc content.
+match-parent: width/height of a view should be as big as its parent.
+fill_parent: view should expand to take as much space as its available within its parent
+
+Simple App
+----------------------
+
+activity_main.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="314dp"
+        android:layout_height="129dp"
+        android:text="Welcome to My First App"
+        android:textAlignment="center"
+        android:textColor="#E91E63"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.109" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="314dp"
+        android:layout_height="84dp"
+        android:layout_marginStart="48dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.057" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+MainActivity.java
+---------------------
+package com.theody.firstapp;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    Button button;
+    TextView message;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        button = findViewById(R.id.button);
+        message=(TextView) findViewById(R.id.textView3);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                message.setText("Congratulations You have clicked on this button");
+            }
+        });
+    }
+}
+
+_______________________________________________________________________________________________________
+
+Linear Layout
+-------------------
+
+basically this allows you to arrange widgets in single row. Row can be horizontal or Verticle.
+Default orientation is Horizontal.
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_horizontal"
+        android:layout_weight="1"
+        android:background="#aa0000"
+        android:text="Red" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_horizontal"
+        android:background="#00aa00"
+        android:layout_weight="1"
+        android:text="Green" />
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_horizontal"
+        android:layout_weight="1"
+        android:background="#0000aa"
+        android:text="Blue" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_horizontal"
+        android:background="#aaaa00"
+        android:layout_weight="1"
+        android:text="Yellow" />
+
+</LinearLayout>
+
+___________________________________________________________________________________________________________
+
+Vertical Layout
+--------------------
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_horizontal"
+        android:layout_weight="1"
+        android:background="#aa0000"
+        android:text="Red" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_horizontal"
+        android:background="#00aa00"
+        android:layout_weight="1"
+        android:text="Green" />
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_horizontal"
+        android:layout_weight="1"
+        android:background="#0000aa"
+        android:text="Blue" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_horizontal"
+        android:background="#aaaa00"
+        android:layout_weight="1"
+        android:text="Yellow" />
+
+</LinearLayout>
+___________________________________________________________________________________________
+
+Table Layout
+
+This layout arranges all the child views in combination of rows and columns.
+
+Table rows object which can create rows and hold the views. The maximum no of column in table layout depends on a row sliced it is with no of columns.
+
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <TableRow>
+        <TextView
+            android:layout_column="1"
+            android:text="Alpha"
+            android:padding="3dip"/>
+        <TextView
+            android:gravity="right"
+            android:text="Beta"
+            android:padding="3dip"/>
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:layout_column="1"
+            android:text="CupCake"
+            android:padding="3dip"/>
+        <TextView
+            android:gravity="right"
+            android:text="Donut"
+            android:padding="3dip"/>
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:layout_column="1"
+            android:text="Eclair"
+            android:padding="3dip"/>
+        <TextView
+            android:gravity="right"
+            android:text="Froyo"
+            android:padding="3dip"/>
+    </TableRow>
+    <View
+        android:layout_height="2dip"
+        android:background="#aaaa00"
+        android:padding="3dip"/>
+    <TableRow>
+        <TextView
+            android:text="GingerBread"
+            android:padding="3dip"/>
+        <TextView
+            android:text="HoneyComb"
+            android:padding="3dip"/>
+        <TextView
+            android:gravity="right"
+            android:text="Icecream"
+            android:padding="3dip"/>
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:text="JellyBean"
+            android:padding="3dip"/>
+        <TextView
+            android:text="Kitkat"
+            android:padding="3dip"/>
+        <TextView
+            android:gravity="right"
+            android:text="Lollypop"
+            android:padding="3dip"/>
+    </TableRow>
+    <View
+        android:layout_height="2dip"
+        android:background="#aaaa00"
+        android:padding="3dip"/>
+    <TableRow>
+        <TextView
+            android:layout_column="1"
+            android:text="Marshmellow"
+            android:padding="3dip"/>
+    </TableRow>
+</TableLayout>
+
+========================================================================
+Relative Layout
+
+views are positioned relatively to their neighbour viw or parent.
+
+Simple calculator Application Using Relative Layout and OnclickListener.
+
+xml
+----
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingTop="30dp">
+
+    <EditText
+        android:id="@+id/num1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Enter First Number"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/num2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/num1"
+        android:ems="10"
+        android:hint="Enter Second Number"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/plus"
+        android:layout_width="wrap_content"
+        android:layout_height="68dp"
+        android:layout_below="@id/num2"
+        android:layout_marginTop="32dp"
+        android:paddingTop="10dp"
+        android:text="+"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/minus"
+        android:layout_width="wrap_content"
+        android:layout_height="68dp"
+        android:layout_below="@id/num2"
+        android:layout_alignLeft="@id/plus"
+        android:layout_marginLeft="93dp"
+        android:layout_marginTop="32dp"
+        android:paddingTop="10dp"
+        android:text="-"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/multi"
+        android:layout_width="wrap_content"
+        android:layout_height="68dp"
+        android:layout_below="@id/num2"
+        android:layout_alignLeft="@id/minus"
+        android:layout_marginLeft="93dp"
+        android:layout_marginTop="32dp"
+        android:paddingTop="10dp"
+        android:text="*"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/div"
+        android:layout_width="wrap_content"
+        android:layout_height="68dp"
+        android:layout_below="@id/num2"
+        android:layout_alignLeft="@id/multi"
+        android:layout_marginLeft="93dp"
+        android:layout_marginTop="32dp"
+        android:paddingTop="10dp"
+        android:text="/"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="372dp"
+        android:layout_height="56dp"
+        android:layout_below="@id/multi"
+        android:layout_marginTop="36dp"
+        android:text="Result" />
+</RelativeLayout>
+
+Activity
+----------------
+
+package com.theody.firstapp;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText text1,text2;
+    Button b1,b2,b3,b4;
+    TextView result;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        text1= (EditText) findViewById(R.id.num1);
+        text2=(EditText) findViewById(R.id.num2);
+        b1= (Button) findViewById(R.id.plus);
+        b2= (Button) findViewById(R.id.minus);
+        b3= (Button) findViewById(R.id.multi);
+        b4= (Button) findViewById(R.id.div);
+        result=(TextView) findViewById(R.id.result);
+
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int res=Integer.parseInt(text1.getText().toString())+
+                        Integer.parseInt((text2.getText().toString()));
+                result.setText("Addition: "+res);
+            }
+        });
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int res=Integer.parseInt(text1.getText().toString())-
+                        Integer.parseInt((text2.getText().toString()));
+                result.setText("Subtraction: "+res);
+            }
+        });
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int res=Integer.parseInt(text1.getText().toString())*
+                        Integer.parseInt((text2.getText().toString()));
+                result.setText("Multiplication: "+res);
+            }
+        });
+        b4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int res=Integer.parseInt(text1.getText().toString())/
+                        Integer.parseInt((text2.getText().toString()));
+                result.setText("Division: "+res);
+            }
+        });
+
+
+    }
+}
+___________________________________________________________________________________________________
+
+Intent:
+ we have multiple acitivities in out application, by clicking on one button we want to activate another activity. That we can do with the help of Intent.
+
+We can use explicit intent to work with the same.
+
+package com.theody.firstapp;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+
+    Button login;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        login=(Button) findViewById(R.id.login);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent myIntent= new Intent(MainActivity.this,LoginActivity.class);
+                Bundle b1= new Bundle();
+                b1.putCharArray("message","LoggedIn".toCharArray());
+                myIntent.putExtras(b1);
+                startActivity(myIntent);
+
+            }
+        });
+    }
+
+}
+
+package com.theody.firstapp;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
+
+public class LoginActivity extends AppCompatActivity {
+
+    TextView test;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+        Intent intent= getIntent();
+        Bundle b1= intent.getExtras();
+        char[] t =b1.getCharArray("message");
+        System.out.println(t);
+        test=(TextView) findViewById(R.id.textView2);
+        test.setText(new String(t));
+
+    }
+}
+
+You can add simple button in activity_main and login form in activity_login
+________________________________________________________________________________________
+
+Fragment
+
+Create one android project and add bottom navigation activity it that It will create and application with 3 fragments Home, Navigation and notification.
+
+You can run the same and check the output.
+
+You can also add some content in each xml file and check the output.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

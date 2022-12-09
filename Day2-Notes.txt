@@ -1,0 +1,351 @@
+In JAVA multiple Inheritance is not supported.
+
+once class extends only once class note more.
+
+_______________________________________________________________________
+
+Abstraction
+
+hiding the functionality of a class.
+
+Hiding the functionality and show a userInterface to the user through which user can interact.
+
+Here in java to implement that we have Interface.
+
+In Interface we can just add the method declaration no defination. By default all the methods of Interface are public. We can also declare the variables by default all the variables are public and final.
+
+public Interface Car{
+	public void start();
+	public void stop();
+}
+--------------------------------------------------------------
+package com.theody.project2.abstraction;
+
+public class Honda implements Car{
+
+	@Override
+	public void start() {
+		System.out.println("Honda Car Started");
+	}
+	@Override
+	public void stop() {
+		System.out.println("Honda Car Stopped");
+	}
+
+}
+----------------------------------------------------------------------------
+package com.theody.project2.abstraction;
+
+public class BMW implements Car{
+
+	@Override
+	public void start() {
+		System.out.println("BMW Car Started");
+	}
+	@Override
+	public void stop() {
+		System.out.println("BMW Car Stopped");
+	}
+
+}
+----------------------------------------------------------------------------
+package com.theody.project2.abstraction;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Car sonamCar= new BMW();
+		Car chackieCar= new Honda();
+		
+		sonamCar.start();
+		chackieCar.start();
+	}
+}
+______________________________________________________________________________________
+
+If we create one more interface as below
+
+package com.theody.project2.abstraction;
+
+public interface AdvancedCar {
+
+	public void powerWindow();
+	public void autoStart();
+}
+___________________________________________________________________________________
+
+We can update BMW as below
+
+package com.theody.project2.abstraction;
+
+public class BMW implements Car,AdvancedCar{
+
+	@Override
+	public void start() {
+		System.out.println("BMW Car Started");
+	}
+	@Override
+	public void stop() {
+		System.out.println("Car Stopped");
+	}
+	@Override
+	public void powerWindow() {
+		System.out.println("BMW Power Window");
+	}
+	@Override
+	public void autoStart() {
+		System.out.println("BMW AutoStart");
+	}
+
+}
+
+Once class can implement multiple interfaces. So indirectly we can implement multiple inheritance using interface.
+_______________________________________________________________________________________________________
+
+Static Keyword
+
+1. if we declare static method then we can call the methods by using just a class name without creating a object of that class.
+
+2. If we declare a variable as a static then it refers to the same memory location. Memory management we can do using static keyword.
+
+package com.theody.project2.abstraction;
+
+public class Student {
+
+	private int id;
+	private String name;
+	private String email;
+	private static int std=10;
+	
+	public Student(int id, String name, String email) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+	}
+	public static void main(String[] args) {
+		Student s1= new Student(1, "Sonam", "soni");
+		System.out.println(s1.id+" "+s1.name+" "+s1.email+" "+s1.std);
+	}
+}
+________________________________________________________________________________________________________
+
+Final Keyword
+
+1. if we declare a variable as a final then it will constant, can not change the value.
+
+2. if we declare a method as a final it can not be overriden.
+
+3. If we declare a class as a final it can not be inherited by other class.
+
+_____________________________________________________________________________________________________
+
+Thead
+
+we can implement multithreading with the help of thread class or runnable Interface.
+
+package com.theody.project2.thread;
+
+public class ThreadDemo extends Thread{
+
+	public void run() {
+		for(int i=1;i<=5;i++) {
+			System.out.println(Thread.currentThread().getName()+" "+i);
+			
+			try {
+				Thread.sleep(1000);//sleep for 1 sec
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	public static void main(String[] args) {
+		ThreadDemo t1= new ThreadDemo();
+		t1.setName("First");
+		ThreadDemo t2= new ThreadDemo();
+		t2.setName("Second");
+		ThreadDemo t3= new ThreadDemo();
+		t3.setName("Third");
+		t1.start();
+		t2.start();
+		t3.start();
+	}
+}
+____________________________________________________________________________________________
+Let's Implement the thread with help of Runnable Interface.
+
+package com.theody.project2.thread;
+
+public class RunnableDemo implements Runnable{
+
+	@Override
+	public void run() {
+		for(int i=1;i<=5;i++) {
+			System.out.println(Thread.currentThread().getName()+" "+i);
+			try {
+				Thread.sleep(1000);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	public static void main(String[] args) {
+		Runnable target1= new RunnableDemo();
+		Runnable target2= new RunnableDemo();
+		Thread t1= new Thread(target1, "first");
+		Thread t2= new Thread(target2, "Second");
+		t1.start();
+		t2.start();
+	}
+
+}
+
+_______________________________________________________________________________________________
+
+Annonymous Inner class
+
+class without a name called annonymous class
+
+example:
+
+package com.theody.project2.thread;
+
+import com.theody.project2.abstraction.Car;
+
+public class InnerDemo {
+
+	public static void main(String[] args) {
+		
+		Thread t1= new Thread(new Runnable() {
+			public void run() {
+				System.out.println("Thread started");
+			}
+		});
+		t1.start();
+		Car myModel= new Car() {
+			@Override
+			public void stop() {
+				System.out.println("My car Stopped");
+			}
+			@Override
+			public void start() {
+				System.out.println("My Car Started");
+			}
+		};
+	}
+}
+__________________________________________________________________________________________________
+
+Collection: 
+
+package com.theody.project2.thread;
+import java.util.*;
+public class ArrayListDemo {
+
+	public static void main(String[] args) {
+		
+		List<String> list= new ArrayList<>();
+		list.add("Alex");
+		list.add("John");
+		list.add("Sonam");
+		
+		System.out.println(list);
+		list.remove(2);
+		System.out.println("Contains Alex: "+ list.contains("John"));
+		
+		System.out.println("Is Empty: "+list.isEmpty());
+		System.out.println("Print list");
+		Iterator<String> it= list.iterator();
+		while (it.hasNext()) {
+			String data = (String) it.next();
+			System.out.println(data);
+		}
+		list.clear();
+		System.out.println("Is Empty: "+list.isEmpty());
+	}
+}
+
+____________________________________________________________________________________________
+
+For LinkedList the methods are are similar to ArrayList, Internal process is diffrent.
+
+create a class Named Employee (id, name, designation,salary, add constructors)
+
+Create List with help of LinkedList of Employee class and use the methods for the same.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
